@@ -22,7 +22,6 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
   - [Navigating with React Router](#navigating-with-react-router)
   - [Using other frameworks](#using-other-frameworks)
   - [Using plain JavaScript](#using-plain-javascript)
-- [TODO](#todo)
 
 
 
@@ -183,27 +182,30 @@ The frontend app is a normal, blank [Vite](https://vite-pages.pages.dev/) React 
 
 Single Page Applications have tradeoffs: On one hand they are conceptually simpler, and if you have already learned plain JavaScript and React, they're quick to get started. On the other hand unlike with opinionated server-side rendering frameworks like Next.js or Remix, you need to decide how to load data from a server, and how to structure the navigation between pages in your application.
 
-If you are new to React and are learning from scratch, it's worth considering starting with a Server-Side Rendering frameworks like [Remix](https://remix.run/) or [Next.js](https://nextjs.org/) instead.
+If you are new to React and are learning from scratch, it's worth considering starting with a Server-Side Rendering frameworks like [Remix](https://remix.run/) instead. In the future, when Remix Vite will start supporting Cloudflare, this template may be converted to a SSR-first approach.
 
 ### Fetching data with React Query
+
+TODO
 
 See [React Query documentation](https://tanstack.com/query/v3/docs/react/overview) for more information.
 
 ### Navigating with React Router
 
+TODO
+
 See [React Router documentation](https://reactrouter.com) for more information.
 
 ### Using other frameworks
 
+TODO
+
 ### Using plain JavaScript
 
-## TODO
+TODO
 
-- [x] Functions tutorial
-- [ ] Deal with TS/JS
-- [ ] Deal with DOM lib in functions
-- [ ] Finish database tutorial
-- [ ] Data fetching
-- [ ] Routing
+# License
+
+MIT
 
 
