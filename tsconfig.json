@@ -1,9 +1,8 @@
 {
+  "include": ["src", "functions"],
+  "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
-    "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -18,8 +17,27 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "noFallthroughCasesInSwitch": true,
+
+    /* Language and Environment */
+    // "target": "ES2020",
+    "target": "es2021" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+
+    // "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["es2021"],
+
+    // "module": "ESNext",
+    "module": "es2022" /* Specify what module code is generated. */,
+
+    "types": [
+      "@cloudflare/workers-types"
+    ] /* Specify type package names to be included without being referenced in a source file. */,
+
+    /* JavaScript Support */
+    "allowJs": true /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
+    "checkJs": false /* Enable error reporting in type-checked JavaScript files. */,
+
+    "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
+  }
 }
