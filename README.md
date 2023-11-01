@@ -3,7 +3,9 @@
 
 ⚠️ **Work in Progress** (usable, but not yet polished and fully documented)
 
-This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
+This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them on [Cloudflare Pages](https://pages.cloudflare.com/).
+
+**Cloudflare Pages** is a hosting service for websites and applications. Together with the [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) serverless database, you can host full-stack applications very cheaply, or for free.
 
 <!-- omit in toc -->
 ## Table of Contents
@@ -12,7 +14,7 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
 - [Why this, why now?](#why-this-why-now)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [1. Clone or fork this repository](#1-clone-or-fork-this-repository)
+  - [1. Fork and clone this repository](#1-fork-and-clone-this-repository)
   - [2. Install dependencies](#2-install-dependencies)
   - [3. Create local D1 database](#3-create-local-d1-database)
   - [4. Start development server](#4-start-development-server)
@@ -32,26 +34,21 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
 ## What's included?
 
 This template contains the following components
-- **Frontend:** ⚡️ React + [Vite](https://vitejs.dev/) application with minimal libraries (code: [`/app`](app/)).
-- **Backend:**  [Cloudflare Pages Functions](https://pages.cloudflare.com[) (code: [`/functions`](functions/))
+- **Frontend:** ⚡️ React + [Vite](https://vitejs.dev/) application with minimal libraries (see code: [`/app`](app/)).
+- **Backend:**  [Cloudflare Pages Functions](https://pages.cloudflare.com[) (see code: [`/functions`](functions/))
 - **Database:** [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) SQLite database.
 
 All of the code is written in TypeScript, but you can easily [convert it to plain JavaScript instead](#using-plain-javascript).
 
 ## Why this, why now?
 
-Hosting production-grade websites has never been easier: Companies like [Vercel](https://vercel.com), [Netlify](https://netlify.com) and [Render](https://render.com) make it relatively simple to host a static or a server-rendered website. Hosting databases is also easier than ever: [PlanetScale](https://planetscale.com), [Neon](https://neon.tech), [Railway](https://railway.app), and others can handle your database hosting for you. 
+Hosting serious, production-grade websites has never been easier: Companies like [Vercel](https://vercel.com), [Netlify](https://netlify.com) and [Render](https://render.com) make it simple to host a static or a server-rendered website. Hosting databases is also easier than ever, using [PlanetScale](https://planetscale.com), [Neon](https://neon.tech), [Railway](https://railway.app), or others.
 
-For professional software engineers, these tools make day-to-day work a breeze. However, for beginners, navigating the myriad of options, integrating different parts of the stack and understanding which of the bells and whistles of their offering is necessary for their use case can be confusing.
+For professional software engineers, these platforms make day-to-day work a breeze. However, for beginners and tinkerers, navigating the myriad of options, integrating different parts of the stack and understanding which parts of their offering are necessary for your use case can be confusing.
 
-[Cloudflare Pages](https://pages.cloudflare.com) and [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) are a great combination for hosting interactive, dynamic, high-performance websites and applications for very cheaply, or in many cases, for free. They allow you to implement the frontend, backend and database in a single codebase using just your favorite JavaScript library and a serverless SQLite-compatible database, allowing new developers who already know these tools to focus on programming their application instead of understanding different hosting paradigms.
-
-However, the initial setup for a database-backed website on Cloudflare is still a bit of a pain.
-
-This template aims to make it easy to build and host web applications on Cloudflare Pages.
+[Cloudflare Pages](https://pages.cloudflare.com) and [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) are a great combination for hosting interactive, dynamic websites and applications for very cheaply, or in many cases, for free. You can write and deploy the frontend, backend and database to the cloud using just your favorite JavaScript framework and a serverless SQLite-compatible database. If you already know these tools, you can focus on programming your application instead of understanding different hosting solutions.
 
 ## Getting Started
-
 
 ### Prerequisites
 
@@ -59,16 +56,15 @@ For local development, you'll need a recent version of [Node.js](https://nodejs.
 
 To deploy the project to the internet, you'll be prompted to create a free [Cloudflare](https://pages.cloudflare.com/) account if you don't yet have one. 
 
-### 1. Clone or fork this repository
+### 1. Fork and clone this repository
 
-If you are starting a new project, you can fork this template to your own account by pressing the [**Use this template**](https://github.com/new?template_name=cloudflare-pages-react-sqlite-starter&template_owner=jevakallio) button.
+You can fork this template to your own account by pressing the [**Use this template**](https://github.com/new?template_name=cloudflare-pages-react-sqlite-starter&template_owner=jevakallio) button, and then clone the created repository.
 
-If you are just exploring
-
+If you are just trying things out, you can clone this repository directly, but before deploying to Cloudflare pages you should fork it to your own account so you can [configure automatic deployments](#deploying-your-project-to-cloudflare-pages)
 
 ### 2. Install dependencies
 
-Clone or fork this repository, and run:
+Having cloned the repository locally, run:
 ```bash
 npm install
 ```
@@ -81,7 +77,9 @@ Run the following command:
 npx wrangler d1 create <your-database-name>
 ```
 
-This will print a D1 database configuration into your terminal. Copy it and add it to your [`wrangler.toml`](./wrangler.toml) file in the project root directory:
+If you haven't yet logged into your Cloudflare account, you will be prompted to do so now. If you don't yet have an account, you can create one at this point.
+
+Once the command completes, it will print a D1 database configuration into your terminal. Copy it and add it to your [`wrangler.toml`](./wrangler.toml) file in the project root directory:
 
 ```toml
 [[d1_databases]]
@@ -98,7 +96,9 @@ You should now be able to run the application locally with:
 npm run dev
 ```
 
-If you navigate to [localhost:3000](http://localhost:3000), you should see an empty website that displays the current time. The time is requested from a locally running Cloudflare D1 database, via a [a serverless edge function](functions/api/time).
+If you navigate to [localhost:3000](http://localhost:3000), you should see an empty website that displays the current time. The time is requested from a locally running Cloudflare D1 database, via [a serverless edge function](functions/api/time).
+
+You can now start working on your application. To continue reading, follow either the [deployment guide](#deploying-your-project-to-cloudflare-pages) or start by [defining a database schema](#working-with-the-d1-sqlite-database) locally.
 
 ## Deploying your project to Cloudflare Pages
 
@@ -116,22 +116,23 @@ Cloudflare Pages allows you to deploy automatically from a GitHub repository. Le
      - **Build output directory**: `dist`
    - Press **Save and Deploy**
 
-Cloudflare Pages will now automatically deploy your application after every commit to your **production branch**.
+Cloudflare Pages will now automatically deploy your application after every commit to the **production branch** you chose above.
 
 ### Deploy from your local machine
 
-If you don't want to automatically deploy from git, you can deploy by running the following command and following the instructions presented in your terminal to either create a new Cloudflare Pages project or deploy to an existing project.
+If you don't want to automatically deploy from git, you can deploy by running the following command below:
 
 ```bash
 npm run deploy
 ```
 
-Whether or not you are using the automatic git deployment, you can always deploy from your local machine using the same command.
+Follow the instructions presented in your terminal. You will choose to either create a new Cloudflare Pages project or deploy to an existing project.
 
+Whether or not you are using the automatic git deployment, you can always deploy from your local machine using the same `npm run deploy` command.
 
 ### Access your D1 database from Cloudflare Pages Functions
 
-Once the application is deployed, we'll need to configure your website to use the database.
+Once the application is deployed, you'll need to configure your website to use the database.
 
 First, make sure you have created a local database by following the [**Getting Started**](#getting-started) guide.
 
@@ -192,15 +193,19 @@ export const onRequest = async (context) => {
 };
 ```
 
-Read more about Functions routing in the [official documentation](https://developers.cloudflare.com/pages/platform/functions/routing/).
+If you have any question about Functions routing, read in the [official Cloudflare documentation](https://developers.cloudflare.com/pages/platform/functions/routing/).
 
 ## Working with Vite frontend
 
-The frontend app is a normal, blank [Vite](https://vite-pages.pages.dev/) React Single Page Application (SPA). This means that the frontend is a "pure frontend": all the code runs in the user's browser, and not on a server.
+The frontend app is a standard blank [Vite](https://vite-pages.pages.dev/) React Single Page Application (SPA). This means that the frontend is a "pure frontend": all the code runs in the user's browser, and not on a server.
 
-Single Page Applications have tradeoffs: On one hand they are conceptually simpler, and if you have already learned plain JavaScript and React, they're quick to get started. On the other hand unlike with opinionated server-side rendering frameworks like Next.js or Remix, you need to decide how to load data from a server, and how to structure the navigation between pages in your application.
+If you have already learned plain JavaScript and React, you already know everything you need to get started. 
 
-If you are new to React and are learning from scratch, it's worth considering starting with a Server-Side Rendering frameworks like [Remix](https://remix.run/) instead. In the future, when Remix Vite will start supporting Cloudflare, this template may be converted to a SSR-first approach.
+However, unlike opinionated server-side frameworks like Next.js or Remix, a plain React application it up to you to decide how to load data from a server, and how to structure the navigation between pages in your application.
+
+To make these tasks easier, this template includes two libraries: [React Query](https://tanstack.com/query/v3/docs/react/overview) and [React Router](https://reactrouter.com). 
+
+These libraries are optional, and you can choose not to use them. But if you do, read on for more information.
 
 ### Fetching data with React Query
 
