@@ -9,7 +9,7 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
 ## Table of Contents
 
 - [What's included?](#whats-included)
-- [Why Cloudflare?](#why-cloudflare)
+- [Why this, why now?](#why-this-why-now)
 - [Getting Started](#getting-started)
   - [1. Install dependencies](#1-install-dependencies)
   - [2. Create local D1 database](#2-create-local-d1-database)
@@ -30,13 +30,13 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
 ## What's included?
 
 This template contains the following components
-- **Frontend:** ⚡️ React/[Vite](https://vitejs.dev/) application with minimal libraries (code: [`/app`](app/)).
+- **Frontend:** ⚡️ React + [Vite](https://vitejs.dev/) application with minimal libraries (code: [`/app`](app/)).
 - **Backend:**  [Cloudflare Pages Functions](https://pages.cloudflare.com[) (code: [`/functions`](functions/))
-- **Database:** [Cloudflare D1]([Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) SQLite database.
+- **Database:** [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) SQLite database.
 
 All of the code is written in TypeScript, but you can easily [convert it to plain JavaScript instead](#using-plain-javascript).
 
-## Why Cloudflare?
+## Why this, why now?
 
 Hosting production-grade websites has never been easier: Companies like [Vercel](https://vercel.com), [Netlify](https://netlify.com) and [Render](https://render.com) make it relatively simple to host a static or a server-rendered website. Hosting databases is also easier than ever: [PlanetScale](https://planetscale.com), [Neon](https://neon.tech), [Railway](https://railway.app), and others can handle your database hosting for you. 
 
