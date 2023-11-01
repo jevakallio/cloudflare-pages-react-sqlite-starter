@@ -1,6 +1,8 @@
 <!-- omit in toc --> 
 # Cloudflare Pages + D1 SQLite + React Template
 
+⚠️ **Work in Progress** (usable, but not yet polished and fully documented)
+
 This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 <!-- omit in toc -->
@@ -16,6 +18,7 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
   - [Deploy from your local machine](#deploy-from-your-local-machine)
   - [Access your D1 database from Cloudflare Pages Functions](#access-your-d1-database-from-cloudflare-pages-functions)
 - [Working with the D1 SQLite database](#working-with-the-d1-sqlite-database)
+  - [](#)
 - [Working with API endpoints](#working-with-api-endpoints)
 - [Working with Vite frontend](#working-with-vite-frontend)
   - [Fetching data with React Query](#fetching-data-with-react-query)
@@ -139,6 +142,7 @@ That should have done it! Your hosted application should now be able to access t
 
 If you followed the [Getting Started](#getting-started) and [Deploying your project to Cloudflare Pages](#deploying-your-project-to-cloudflare-pages) guides, you should now have a working web application that talks to an empty database.
 
+###
 
 ## Working with API endpoints
 
