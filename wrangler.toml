@@ -1,4 +1,5 @@
 [[d1_databases]]
-binding = "DB"
-database_id = "f15dbf36-dbd4-42d5-a2c7-65bc5ec31023"
-database_name = "events-db"
+binding = "DB" 
+database_id = "f15dbf36-dbd4-42d5-a2c7-65bc5ec31023" 
+database_name = "events-db" 
+preview_database_id = "DB" # Required for Pages local development

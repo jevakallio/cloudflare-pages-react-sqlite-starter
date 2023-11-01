@@ -10,7 +10,7 @@ function Events() {
 
   return (
     <>
-      <div>Wow</div>
+      <div>Whoa, cool</div>
       <div className="card">
         {isPending ? (
           <p>Loading...</p>

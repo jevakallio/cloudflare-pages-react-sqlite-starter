@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS events;
 
 CREATE TABLE
-    IF NOT EXISTS events (
+    events (
         event_id INTEGER PRIMARY KEY AUTOINCREMENT,
         event_name TEXT,
         event_start_date TEXT
@@ -10,4 +10,4 @@ CREATE TABLE
 INSERT INTO
     events (event_name, event_start_date)
 VALUES
-    ('My Birthday Party', '2013-02-15')
+    ('My First Event', '2023-11-01T14:00:00.000Z');
