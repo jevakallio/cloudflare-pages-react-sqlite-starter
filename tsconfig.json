@@ -19,9 +19,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "target": "es2021" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "lib": ["DOM", "DOM.Iterable", "es2021"],
-    "module": "es2022" /* Specify what module code is generated. */,
+    "target": "es2021",
+    //"lib": ["DOM", "DOM.Iterable", "es2021"],
+    "lib": ["es2021"],
+    "module": "es2022",
     "types": ["@cloudflare/workers-types"],
 
     /* JavaScript Support */

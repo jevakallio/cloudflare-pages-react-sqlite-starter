@@ -102,6 +102,16 @@ That should have done it! Your hosted application should now be able to access t
 
 If you followed the [Getting Started](#getting-started) and [Deploying your project to Cloudflare Pages](#deploying-your-project-to-cloudflare-pages) guides, you should now have a working web application that talks to an empty database.
 
-TODO
+TODO...
+
+
+# TODO
+
+- [ ] Deal with TS/JS
+- [ ] Deal with DOM lib in functions
+- [ ] Finish database tutorial
+- [ ] Functions tutorial
+- [ ] Data fetching
+- [ ] Routing
 
 
