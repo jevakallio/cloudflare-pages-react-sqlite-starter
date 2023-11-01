@@ -1,21 +1,45 @@
+<!-- omit in toc --> 
 # Vite + Cloudflare Pages + D1 Template
 
+- [What's included?](#whats-included)
+- [Why Cloudflare?](#why-cloudflare)
+- [Getting Started](#getting-started)
+  - [1. Install dependencies](#1-install-dependencies)
+  - [2. Create local D1 database](#2-create-local-d1-database)
+  - [3. Start development server](#3-start-development-server)
+- [Deploying your project to Cloudflare Pages](#deploying-your-project-to-cloudflare-pages)
+  - [Deploy from your local machine](#deploy-from-your-local-machine)
+  - [Access your D1 database from Cloudflare Pages Functions](#access-your-d1-database-from-cloudflare-pages-functions)
+- [Working with the D1 SQLite database](#working-with-the-d1-sqlite-database)
+- [Working with API endpoints](#working-with-api-endpoints)
+- [Working with Vite frontend](#working-with-vite-frontend)
+  - [Fetching data with React Query](#fetching-data-with-react-query)
+  - [Navigating with React Router](#navigating-with-react-router)
+  - [Using other frameworks](#using-other-frameworks)
+  - [Using plain JavaScript](#using-plain-javascript)
+- [TODO](#todo)
+
+
 This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
+
+## What's included?
 
 This template contains the following components
 - **Frontend:** ⚡️ React/[Vite](https://vitejs.dev/) application ([`/app`](app/)) with minimal libraries:
   - [React Query](https://tanstack.com/query/v3/) for data fetching
   - [React Router](https://reactrouter.com/) for creating multiple pages
-- **Backend:** Cloudflare Pages Functions ([`/functions`](functions/))
-- **Database:** Cloudflare D1 SQLite database
+- **Backend:**  [Cloudflare Pages](https://pages.cloudflare.com[) Serverless Edge Functions ([`/functions`](functions/))
+- **Database:** [Cloudflare D1]([Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) SQLite database.
 
-## Why?
+All of the code is written in TypeScript, but you can easily convert it to plain JavaScript instead.
+
+## Why Cloudflare?
 
 Hosting production-grade websites has never been easier: Companies like [Vercel](https://vercel.com), [Netlify](https://netlify.com) and [Render](https://render.com) make it relatively simple to host a static or a server-rendered website. Hosting databases is also easier than ever: [PlanetScale](https://planetscale.com), [Neon](https://neon.tech), [Railway](https://railway.app), and others can handle your database hosting for you. 
 
-For a professional software engineers, these tools make day-to-day work a breeze. However, for beginners, navigating the myriad of options, integrating different parts of the stack and understanding which of the bells and whistles of their offering is necessary for their use case can be confusing.
+For professional software engineers, these tools make day-to-day work a breeze. However, for beginners, navigating the myriad of options, integrating different parts of the stack and understanding which of the bells and whistles of their offering is necessary for their use case can be confusing.
 
-[Cloudflare Pages](https://pages.cloudflare.com[) and [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) are a great combination for hosting interactive, dynamic websites and applications for very cheaply, or in many cases, for free. They allow you to implement the frontend, backend and database in a single codebase using just your favorite JavaScript library and a serverless SQLite-compatible database, allowing new developers who already know these tools to focus on programming their application instead of understanding different hosting paradigms.
+[Cloudflare Pages](https://pages.cloudflare.com) and [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) are a great combination for hosting interactive, dynamic, high-performance websites and applications for very cheaply, or in many cases, for free. They allow you to implement the frontend, backend and database in a single codebase using just your favorite JavaScript library and a serverless SQLite-compatible database, allowing new developers who already know these tools to focus on programming their application instead of understanding different hosting paradigms.
 
 However, the initial setup for a database-backed website on Cloudflare is still a bit of a pain.
 
@@ -55,15 +79,15 @@ You should now be able to run the application locally with:
 npm run dev
 ```
 
-If you navigate to [localhost:3000](http://localhost:3000), you should see an empty website that displays the current time.
-
+If you navigate to [localhost:3000](http://localhost:3000), you should see an empty website that displays the current time. The time is requested from a locally running Cloudflare D1 database, via a [a serverless edge function](functions/api/time).
 
 ## Deploying your project to Cloudflare Pages
 
 Cloudflare Pages allows you to deploy automatically from a GitHub repository. Let's set that up:
 
-1. Go to [pages.cloudflare.com](https://pages.cloudflare.com/) and create a new account, or login to your existing Cloudflare account.
-2. Press **Create application**, and then:
+1. Make sure your project is uploaded to GitHub (or follow the [Deploy from your local machine](#deploy-from-your-local-machine) guide below instead).
+2. Go to [pages.cloudflare.com](https://pages.cloudflare.com/) and create a new account, or login to your existing Cloudflare account.
+3. Press **Create application**, and then:
    - Switch to the **Pages** tab.
    - Press **Connect to git**
    - Select your repository
@@ -114,15 +138,67 @@ That should have done it! Your hosted application should now be able to access t
 
 If you followed the [Getting Started](#getting-started) and [Deploying your project to Cloudflare Pages](#deploying-your-project-to-cloudflare-pages) guides, you should now have a working web application that talks to an empty database.
 
-TODO...
 
+## Working with API endpoints
 
-# TODO
+The template contains one API endpoint: [`/api/time`](functions/api/time), which queries the database for the current time, and returns it to the client as a JSON response:
+```ts
+export const onRequest = async (context) => {
+  // construct a query using the D1 bound to "context.env.DB"
+  const query = context.env.DB.prepare(`SELECT DATETIME('now') as time`);
+  // fetch and respond with data as JSON
+  const data = await query.first();
+  return Response.json(data);
+};
+```
 
+The API endpoints are created by mirroring the desired URL as a file path under the [`/functions`](functions/) directory. 
+
+For example, if we were creating an application for listing and creating products, you could create a file `/api/products.ts` to respond with a list of products when a request is made to `/api/products`. You can also use dynamic route parameters such as `/api/products/[id].ts`, which could return a single product when calling `/api/products/123` or `/api/products/456`:
+
+```ts
+// functions/products/[id].ts
+export const onRequest = async (context) => {
+  // read the value of [id] url fragment from "context.params"
+  const productId = context.params.id
+  // construct a query using the D1 bound to "context.env.DB"
+  const query = context.env.DB
+   .prepare(`SELECT * FROM products WHERE product_id = ?`)
+   .bind(productId);
+  // fetch and respond with data
+  const data = await query.first();
+  return Response.json(data);
+};
+```
+
+Read more about Functions routing in the [official documentation](https://developers.cloudflare.com/pages/platform/functions/routing/).
+
+## Working with Vite frontend
+
+The frontend app is a normal, blank [Vite](https://vite-pages.pages.dev/) React Single Page Application (SPA). This means that the frontend is a "pure frontend": all the code runs in the user's browser, and not on a server.
+
+Single Page Applications have tradeoffs: On one hand they are conceptually simpler, and if you have already learned plain JavaScript and React, they're quick to get started. On the other hand unlike with opinionated server-side rendering frameworks like Next.js or Remix, you need to decide how to load data from a server, and how to structure the navigation between pages in your application.
+
+If you are new to React and are learning from scratch, it's worth considering starting with a Server-Side Rendering frameworks like [Remix](https://remix.run/) or [Next.js](https://nextjs.org/) instead.
+
+### Fetching data with React Query
+
+See [React Query documentation](https://tanstack.com/query/v3/docs/react/overview) for more information.
+
+### Navigating with React Router
+
+See [React Router documentation](https://reactrouter.com) for more information.
+
+### Using other frameworks
+
+### Using plain JavaScript
+
+## TODO
+
+- [x] Functions tutorial
 - [ ] Deal with TS/JS
 - [ ] Deal with DOM lib in functions
 - [ ] Finish database tutorial
-- [ ] Functions tutorial
 - [ ] Data fetching
 - [ ] Routing
 
