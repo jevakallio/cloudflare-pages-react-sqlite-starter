@@ -1,13 +1,17 @@
-DROP TABLE IF EXISTS events;
+-- Ensure we are starting from scratch
+DROP TABLE IF EXISTS products;
 
+-- Create the table
 CREATE TABLE
-    events (
-        event_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        event_name TEXT,
-        event_start_date TEXT
+    products (
+        product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_name TEXT
     );
 
+-- Seed some fake data
 INSERT INTO
-    events (event_name, event_start_date)
+    products (product_name)
 VALUES
-    ('My First Event', '2023-11-01T14:00:00.000Z');
+    ('Product A'),
+    ('Product B'),
+    ('Product C');

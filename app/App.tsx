@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import "./App.css";
 
-function Events() {
+function List() {
   const { isPending, error, data } = useQuery<{ time: string }>({
-    queryKey: ["events"],
-    queryFn: () => fetch("/api/events").then((res) => res.json()),
+    queryKey: ["products"],
+    queryFn: () => fetch("/api/products").then((res) => res.json()),
   });
 
   return (
@@ -42,7 +42,7 @@ function App() {
         ) : (
           <p>{data?.time}</p>
         )}
-        <Events />
+        <List />
       </div>
     </>
   );

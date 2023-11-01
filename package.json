@@ -12,11 +12,11 @@
     "vite:build": "vite build",
     "db:migrations:create": "npx wrangler d1 migrations create DB",
     "db:migrations:apply": "npx wrangler d1 migrations apply --local DB",
-    "db:migrations:apply-preview": "npx wrangler d1 migrations apply --preview DB",
     "db:migrations:apply-production": "npx wrangler d1 migrations apply DB",
-    "db:migrations:reset": "npx wrangler d1 execute DB --local --command 'DROP TABLE IF EXISTS d1_migrations' && npm run db:migrations:apply-local",
+    "db:init": "npm run db:migrations:apply",
+    "db:reset": "rimraf .wrangler/state && npm run db:init",
+    "db:dangerously-reset-production": "npx wrangler d1 execute DB --command 'DROP TABLE IF EXISTS d1_migrations' && npm run db:migrations:apply",
     "db:exec": "wrangler d1 execute --local DB",
-    "db:exec-preview": "wrangler d1 execute --preview DB",
     "db:exec-production": "wrangler d1 execute DB"
   },
   "dependencies": {

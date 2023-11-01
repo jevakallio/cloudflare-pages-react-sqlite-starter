@@ -1,5 +1,5 @@
 <!-- omit in toc --> 
-# Vite + Cloudflare Pages + D1 Template
+# Cloudflare Pages + D1 SQLite + React Template
 
 This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
 
@@ -22,19 +22,17 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
   - [Navigating with React Router](#navigating-with-react-router)
   - [Using other frameworks](#using-other-frameworks)
   - [Using plain JavaScript](#using-plain-javascript)
-
+- [License](#license)
 
 
 ## What's included?
 
 This template contains the following components
-- **Frontend:** ⚡️ React/[Vite](https://vitejs.dev/) application ([`/app`](app/)) with minimal libraries:
-  - [React Query](https://tanstack.com/query/v3/) for data fetching
-  - [React Router](https://reactrouter.com/) for creating multiple pages
-- **Backend:**  [Cloudflare Pages](https://pages.cloudflare.com[) Serverless Edge Functions ([`/functions`](functions/))
+- **Frontend:** ⚡️ React/[Vite](https://vitejs.dev/) application with minimal libraries (code: [`/app`](app/)).
+- **Backend:**  [Cloudflare Pages Functions](https://pages.cloudflare.com[) (code: [`/functions`](functions/))
 - **Database:** [Cloudflare D1]([Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) SQLite database.
 
-All of the code is written in TypeScript, but you can easily convert it to plain JavaScript instead.
+All of the code is written in TypeScript, but you can easily [convert it to plain JavaScript instead](#using-plain-javascript).
 
 ## Why Cloudflare?
 
@@ -204,7 +202,7 @@ TODO
 
 TODO
 
-# License
+## License
 
 MIT
 
