@@ -1,6 +1,11 @@
 <!-- omit in toc --> 
 # Vite + Cloudflare Pages + D1 Template
 
+This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
+
+<!-- omit in toc -->
+## Table of Contents
+
 - [What's included?](#whats-included)
 - [Why Cloudflare?](#why-cloudflare)
 - [Getting Started](#getting-started)
@@ -20,7 +25,6 @@
 - [TODO](#todo)
 
 
-This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ## What's included?
 
