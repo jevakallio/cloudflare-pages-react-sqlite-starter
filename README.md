@@ -3,11 +3,23 @@
 This is a minimal, hopefully beginner-friendly template you can use as a starting point for creating simple, database-backed React applications and hosting them for free on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 This template contains the following components
-- **Frontend:** ⚡️ React/Vite application ([`/app`](app/)) with minimal libraries:
-  - React Query for data fetching
-  - React Router for page navigations
+- **Frontend:** ⚡️ React/[Vite](https://vitejs.dev/) application ([`/app`](app/)) with minimal libraries:
+  - [React Query](https://tanstack.com/query/v3/) for data fetching
+  - [React Router](https://reactrouter.com/) for creating multiple pages
 - **Backend:** Cloudflare Pages Functions ([`/functions`](functions/))
 - **Database:** Cloudflare D1 SQLite database
+
+## Why?
+
+Hosting production-grade websites has never been easier: Companies like [Vercel](https://vercel.com), [Netlify](https://netlify.com) and [Render](https://render.com) make it relatively simple to host a static or a server-rendered website. Hosting databases is also easier than ever: [PlanetScale](https://planetscale.com), [Neon](https://neon.tech), [Railway](https://railway.app), and others can handle your database hosting for you. 
+
+For a professional software engineers, these tools make day-to-day work a breeze. However, for beginners, navigating the myriad of options, integrating different parts of the stack and understanding which of the bells and whistles of their offering is necessary for their use case can be confusing.
+
+[Cloudflare Pages](https://pages.cloudflare.com[) and [Cloudflare D1](https://developers.cloudflare.com/d1/learning/local-development/) are a great combination for hosting interactive, dynamic websites and applications for very cheaply, or in many cases, for free. They allow you to implement the frontend, backend and database in a single codebase using just your favorite JavaScript library and a serverless SQLite-compatible database, allowing new developers who already know these tools to focus on programming their application instead of understanding different hosting paradigms.
+
+However, the initial setup for a database-backed website on Cloudflare is still a bit of a pain.
+
+This template aims to make it easy to build and host web applications on Cloudflare Pages.
 
 ## Getting Started
 
