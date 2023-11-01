@@ -1,12 +1,8 @@
-import type { D1Database, PagesFunction } from "@cloudflare/workers-types";
+import { OnRequest } from "../types";
 
-type Env = {
-  TEST_DB: D1Database;
-};
-
-export const onRequest: PagesFunction<Env> = async (context) => {
+export const onRequest: OnRequest = async (context) => {
   // get some data from the database
-  const query = context.env.TEST_DB.prepare(`SELECT DATE('now') as time`);
+  const query = context.env.DB.prepare(`SELECT DATE('now') as time`);
 
   // get the first row
   const data = await query.first();

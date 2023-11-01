@@ -25,3 +25,22 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+# Backend
+
+https://developers.cloudflare.com/d1/get-started/
+
+## Setting up a new database
+
+```bash
+npx wrangler d1 create your-database-name
+```
+
+This will print a configuration into your terminal. Copy it and add it to the `wrangler.toml` file:
+
+```toml
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "your-database-name"
+database_id = "3762f371-4d12-410f-a6a1-50b6668d906e"
+```

@@ -6,11 +6,10 @@ import CloudflarePagesFunctions from "vite-plugin-cloudflare-functions";
 export default defineConfig({
   plugins: [
     react(),
-    CloudflarePagesFunctions({
-      wrangler: {
-        port: 3333,
-        d1: ["TEST_DB"],
-      },
-    }),
+    // CloudflarePagesFunctions({
+    //   wrangler: {
+    //     port: 3333,
+    //   },
+    // }),
   ],
 });
