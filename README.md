@@ -11,9 +11,11 @@ This is a minimal, hopefully beginner-friendly template you can use as a startin
 - [What's included?](#whats-included)
 - [Why this, why now?](#why-this-why-now)
 - [Getting Started](#getting-started)
-  - [1. Install dependencies](#1-install-dependencies)
-  - [2. Create local D1 database](#2-create-local-d1-database)
-  - [3. Start development server](#3-start-development-server)
+  - [Prerequisites](#prerequisites)
+  - [1. Clone or fork this repository](#1-clone-or-fork-this-repository)
+  - [2. Install dependencies](#2-install-dependencies)
+  - [3. Create local D1 database](#3-create-local-d1-database)
+  - [4. Start development server](#4-start-development-server)
 - [Deploying your project to Cloudflare Pages](#deploying-your-project-to-cloudflare-pages)
   - [Deploy from your local machine](#deploy-from-your-local-machine)
   - [Access your D1 database from Cloudflare Pages Functions](#access-your-d1-database-from-cloudflare-pages-functions)
@@ -50,14 +52,28 @@ This template aims to make it easy to build and host web applications on Cloudfl
 
 ## Getting Started
 
-### 1. Install dependencies
+
+### Prerequisites
+
+For local development, you'll need a recent version of [Node.js](https://nodejs.org/en). 
+
+To deploy the project to the internet, you'll be prompted to create a free [Cloudflare](https://pages.cloudflare.com/) account if you don't yet have one. 
+
+### 1. Clone or fork this repository
+
+If you are starting a new project, you can fork this template to your own account by pressing the [**Use this template**](https://github.com/new?template_name=cloudflare-pages-react-sqlite-starter&template_owner=jevakallio) button.
+
+If you are just exploring
+
+
+### 2. Install dependencies
 
 Clone or fork this repository, and run:
 ```bash
 npm install
 ```
 
-### 2. Create local D1 database
+### 3. Create local D1 database
 
 Run the following command:
 
@@ -74,7 +90,7 @@ database_name = "your-database-name"
 database_id = "3762f371-4d12-410f-a6a1-50b6668d906e"
 ```
 
-### 3. Start development server
+### 4. Start development server
 
 You should now be able to run the application locally with:
 
